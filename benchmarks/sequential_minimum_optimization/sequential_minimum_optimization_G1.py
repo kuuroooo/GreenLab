@@ -621,4 +621,4 @@ def plot_partition_boundary(
 if __name__ == "__main__":
     test_cancer_data()
     test_demonstration()
-    plt.show()
+    # # plt.show()

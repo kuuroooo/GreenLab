@@ -1,0 +1,324 @@
+from EventManager.Models.RunnerEvents import RunnerEvents
+from EventManager.EventSubscriptionController import EventSubscriptionController
+from ConfigValidator.Config.Models.RunTableModel import RunTableModel
+from ConfigValidator.Config.Models.FactorModel import FactorModel
+from ConfigValidator.Config.Models.RunnerContext import RunnerContext
+from ConfigValidator.Config.Models.OperationType import OperationType
+from ProgressManager.Output.OutputProcedure import OutputProcedure as output
+
+from typing import Dict, List, Any, Optional
+from pathlib import Path
+from os.path import dirname, realpath
+import os
+import signal
+import pandas as pd
+import time
+import subprocess
+import shlex
+import glob
+
+class RunnerConfig:
+    ROOT_DIR = Path(dirname(realpath(__file__)))
+    BENCHMARKS_DIR = ROOT_DIR
+
+    # ================================ USER SPECIFIC CONFIG ================================
+    """The name of the experiment."""
+    name: str = "benchmarks_energy_analysis"
+
+    """The path in which Experiment Runner will create a folder with the name `self.name`, in order to store the
+    results from this experiment. (Path does not need to exist - it will be created if necessary.)
+    Output path defaults to the config file's path, inside the folder 'experiments'"""
+    results_output_path: Path = ROOT_DIR / 'experiments'
+
+    """Experiment operation type. Unless you manually want to initiate each run, use `OperationType.AUTO`."""
+    operation_type: OperationType = OperationType.AUTO
+
+    """The time Experiment Runner will wait after a run completes.
+    This can be essential to accommodate for cooldown periods on some systems."""
+    time_between_runs_in_ms: int = 2000
+
+    def __init__(self):
+        """Executes immediately after program start, on config load"""
+        
+        # Discover all Python files in benchmarks directory
+        self.python_files = self._discover_python_files()
+        
+        EventSubscriptionController.subscribe_to_multiple_events([
+            (RunnerEvents.BEFORE_EXPERIMENT, self.before_experiment),
+            (RunnerEvents.BEFORE_RUN, self.before_run),
+            (RunnerEvents.START_RUN, self.start_run),
+            (RunnerEvents.START_MEASUREMENT, self.start_measurement),
+            (RunnerEvents.INTERACT, self.interact),
+            (RunnerEvents.STOP_MEASUREMENT, self.stop_measurement),
+            (RunnerEvents.STOP_RUN, self.stop_run),
+            (RunnerEvents.POPULATE_RUN_DATA, self.populate_run_data),
+            (RunnerEvents.AFTER_EXPERIMENT, self.after_experiment)
+        ])
+        self.run_table_model = None  # Initialized later
+        output.console_log(f"Custom config loaded. Found {len(self.python_files)} Python files to benchmark.")
+
+    def _discover_python_files(self) -> List[Path]:
+        """Discover all Python files in the benchmarks directory"""
+        python_files = []
+        
+        # Find all .py files recursively in benchmarks directory
+        for py_file in self.BENCHMARKS_DIR.rglob("*.py"):
+            # Skip __pycache__ and other system files
+            if "__pycache__" not in str(py_file) and "RunnerConfig.py" not in str(py_file):
+                python_files.append(py_file)
+        
+        # Sort files for consistent ordering
+        python_files.sort()
+        return python_files
+
+    def create_run_table_model(self) -> RunTableModel:
+        """Create and return the run_table model here. A run_table is a List (rows) of tuples (columns),
+        representing each run performed"""
+        
+        # Create a single factor for the Python file to run
+        file_paths = [str(py_file.relative_to(self.BENCHMARKS_DIR)) for py_file in self.python_files]
+        file_factor = FactorModel("python_file", file_paths)
+        
+        self.run_table_model = RunTableModel(
+            factors=[file_factor],
+            data_columns=['total_energy_joules', 'execution_time_seconds', 'avg_power_watts', 
+                          'max_power_watts', 'min_power_watts', 'cpu_usage_avg', 'memory_usage_avg']
+        )
+        return self.run_table_model
+
+    def before_experiment(self) -> None:
+        """Perform any activity required before starting the experiment here
+        Invoked only once during the lifetime of the program."""
+        output.console_log(f"Starting energy analysis for {len(self.python_files)} benchmark files")
+        
+        # Create results directories for each experiment type
+        self._create_results_directories()
+
+    def _create_results_directories(self):
+        """Create results directories for each experiment type"""
+        experiment_types = set()
+        
+        for py_file in self.python_files:
+            # Determine experiment type based on directory structure
+            rel_path = py_file.relative_to(self.BENCHMARKS_DIR)
+            if len(rel_path.parts) > 1:
+                experiment_type = rel_path.parts[0]  # First directory is experiment type
+            else:
+                experiment_type = "misc"
+            
+            experiment_types.add(experiment_type)
+            
+            # Create results directory for this experiment type
+            results_dir = self.BENCHMARKS_DIR / experiment_type / "results"
+            results_dir.mkdir(parents=True, exist_ok=True)
+            
+        output.console_log(f"Created results directories for experiment types: {list(experiment_types)}")
+
+    def before_run(self) -> None:
+        """Perform any activity required before starting a run.
+        No context is available here as the run is not yet active (BEFORE RUN)"""
+        pass
+
+    def start_run(self, context: RunnerContext) -> None:
+        """Perform any activity required for starting the run here.
+        For example, starting the target system to measure.
+        Activities after starting the run should also be performed here."""
+        pass
+
+    def start_measurement(self, context: RunnerContext) -> None:
+        """Perform any activity required for starting measurements."""
+        # Get the Python file to run from the context
+        py_file = None
+        for factor_name, factor_value in context.execute_run.items():
+            if factor_name == "python_file":
+                py_file = Path(self.BENCHMARKS_DIR / factor_value)
+                break
+        
+        if not py_file or not py_file.exists():
+            raise FileNotFoundError(f"Python file not found: {py_file}")
+        
+        # Determine output file path based on experiment type
+        rel_path = py_file.relative_to(self.BENCHMARKS_DIR)
+        if len(rel_path.parts) > 1:
+            experiment_type = rel_path.parts[0]
+        else:
+            experiment_type = "misc"
+        
+        output_file = self.BENCHMARKS_DIR / experiment_type / "results" / f"{py_file.stem}.csv"
+        
+        # Create energibridge command
+        profiler_cmd = f'source venv/bin/activate && energibridge --summary -o {output_file} python3 {py_file}'
+        
+        output.console_log(f"Running energibridge on: {py_file.name}")
+        output.console_log(f"Output will be saved to: {output_file}")
+        
+        # Start energibridge process
+        energibridge_log = open(f'{context.run_dir}/energibridge.log', 'w')
+        self.profiler = subprocess.Popen(
+            ["bash", "-c", profiler_cmd], 
+            stdout=energibridge_log, 
+            stderr=subprocess.PIPE,
+            cwd="/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab"
+        )
+
+    def interact(self, context: RunnerContext) -> None:
+        """Perform any interaction with the running target system here, or block here until the target finishes."""
+        # Wait for the energibridge process to complete
+        output.console_log("Waiting for energibridge measurement to complete...")
+        self.profiler.wait()
+
+    def stop_measurement(self, context: RunnerContext) -> None:
+        """Perform any activity here required for stopping measurements."""
+        # Ensure process has finished
+        if hasattr(self, 'profiler') and self.profiler.poll() is None:
+            self.profiler.terminate()
+            self.profiler.wait()
+
+    def stop_run(self, context: RunnerContext) -> None:
+        """Perform any activity here required for stopping the run.
+        Activities after stopping the run should also be performed here."""
+        pass
+    
+    def populate_run_data(self, context: RunnerContext) -> Optional[Dict[str, Any]]:
+        """Parse and process any measurement data here.
+        You can also store the raw measurement data under `context.run_dir`
+        Returns a dictionary with keys `self.run_table_model.data_columns` and their values populated"""
+        
+        # Get the Python file that was run
+        py_file = None
+        for factor_name, factor_value in context.execute_run.items():
+            if factor_name == "python_file":
+                py_file = Path(self.BENCHMARKS_DIR / factor_value)
+                break
+        
+        if not py_file:
+            return None
+        
+        # Determine output file path
+        rel_path = py_file.relative_to(self.BENCHMARKS_DIR)
+        if len(rel_path.parts) > 1:
+            experiment_type = rel_path.parts[0]
+        else:
+            experiment_type = "misc"
+        
+        output_file = self.BENCHMARKS_DIR / experiment_type / "results" / f"{py_file.stem}.csv"
+        
+        if not output_file.exists():
+            output.console_log(f"Warning: Output file not found: {output_file}")
+            return {
+                'total_energy_joules': 0,
+                'execution_time_seconds': 0,
+                'avg_power_watts': 0,
+                'max_power_watts': 0,
+                'min_power_watts': 0,
+                'cpu_usage_avg': 0,
+                'memory_usage_avg': 0
+            }
+        
+        try:
+            # Read the energibridge CSV file
+            df = pd.read_csv(output_file)
+            
+            # Calculate metrics
+            if 'SYSTEM_POWER (Watts)' in df.columns:
+                power_data = df['SYSTEM_POWER (Watts)'].dropna()
+                avg_power = power_data.mean() if len(power_data) > 0 else 0
+                max_power = power_data.max() if len(power_data) > 0 else 0
+                min_power = power_data.min() if len(power_data) > 0 else 0
+            else:
+                avg_power = max_power = min_power = 0
+            
+            # Calculate CPU usage average
+            cpu_columns = [col for col in df.columns if col.startswith('CPU_USAGE_')]
+            if cpu_columns:
+                cpu_data = df[cpu_columns].mean(axis=1).dropna()
+                cpu_usage_avg = cpu_data.mean() if len(cpu_data) > 0 else 0
+            else:
+                cpu_usage_avg = 0
+            
+            # Calculate memory usage average
+            if 'USED_MEMORY' in df.columns and 'TOTAL_MEMORY' in df.columns:
+                memory_usage = (df['USED_MEMORY'] / df['TOTAL_MEMORY'] * 100).dropna()
+                memory_usage_avg = memory_usage.mean() if len(memory_usage) > 0 else 0
+            else:
+                memory_usage_avg = 0
+            
+            # Calculate total energy and execution time from energibridge summary
+            total_energy = 0
+            execution_time = 0
+            
+            # Try to extract from energibridge log
+            log_file = context.run_dir / "energibridge.log"
+            if log_file.exists():
+                with open(log_file, 'r') as f:
+                    log_content = f.read()
+                    for line in log_content.split('\n'):
+                        if "Energy consumption in joules:" in line:
+                            try:
+                                total_energy = float(line.split(':')[1].split()[0])
+                            except:
+                                pass
+                        elif "sec of execution" in line:
+                            try:
+                                execution_time = float(line.split()[0])
+                            except:
+                                pass
+            
+            run_data = {
+                'total_energy_joules': round(total_energy, 3),
+                'execution_time_seconds': round(execution_time, 3),
+                'avg_power_watts': round(avg_power, 3),
+                'max_power_watts': round(max_power, 3),
+                'min_power_watts': round(min_power, 3),
+                'cpu_usage_avg': round(cpu_usage_avg, 3),
+                'memory_usage_avg': round(memory_usage_avg, 3)
+            }
+            
+            output.console_log(f"Processed data for {py_file.name}: {total_energy}J, {execution_time}s")
+            return run_data
+            
+        except Exception as e:
+            output.console_log(f"Error processing data for {py_file.name}: {e}")
+            return {
+                'total_energy_joules': 0,
+                'execution_time_seconds': 0,
+                'avg_power_watts': 0,
+                'max_power_watts': 0,
+                'min_power_watts': 0,
+                'cpu_usage_avg': 0,
+                'memory_usage_avg': 0
+            }
+
+    def after_experiment(self) -> None:
+        """Perform any activity required after stopping the experiment here
+        Invoked only once during the lifetime of the program."""
+        output.console_log("Benchmark energy analysis completed!")
+        
+        # Create summary report
+        self._create_summary_report()
+
+    def _create_summary_report(self):
+        """Create a summary report of all experiments"""
+        summary_file = self.BENCHMARKS_DIR / "energy_analysis_summary.md"
+        
+        with open(summary_file, 'w') as f:
+            f.write("# Energy Analysis Summary\n\n")
+            f.write("This report summarizes the energy consumption analysis for all benchmark experiments.\n\n")
+            
+            # Find all results directories
+            for results_dir in self.BENCHMARKS_DIR.rglob("results"):
+                if results_dir.is_dir():
+                    experiment_type = results_dir.parent.name
+                    f.write(f"## {experiment_type.replace('_', ' ').title()}\n\n")
+                    
+                    csv_files = list(results_dir.glob("*.csv"))
+                    if csv_files:
+                        f.write(f"Found {len(csv_files)} measurement files:\n")
+                        for csv_file in sorted(csv_files):
+                            f.write(f"- {csv_file.name}\n")
+                    else:
+                        f.write("No measurement files found.\n")
+                    f.write("\n")
+
+    # ================================ DO NOT ALTER BELOW THIS LINE ================================
+    experiment_path: Path = None
