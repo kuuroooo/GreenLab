@@ -1,0 +1,48 @@
+Hello!
+Start test SVM using the SMO algorithm!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+All samples satisfy the KKT condition!
+Optimization done!
+Every sample satisfy the KKT condition!
+
+All: 241
+Correct: 238
+Incorrect: 3
+Rough Accuracy: 0.9875518672199171
+SMO algorithm cost 0.38953518867492676 seconds
+
+Starting plot, please wait!
+Plot done!
+Energy consumption in joules: 68.91880248260497 for 4.1022286 sec of execution.

@@ -247,7 +247,8 @@ def plot(
         fig, update, interval=INTERVAL, blit=True
     )
 
-    plt.show()
+    plt.show(block=False)
+    plt.close()
 
 
 def example_1() -> BodySystem:

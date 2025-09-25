@@ -1,42 +1,535 @@
-Hello!
-Start test SVM using the SMO algorithm!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-All samples satisfy the KKT condition!
-Optimization done!
-Every sample satisfy the KKT condition!
 
-All: 241
-Correct: 238
-Incorrect: 3
-Rough Accuracy: 0.9875518672199171
-SMO algorithm cost 0.5584876537322998 seconds
+Generation: 10
+Total Population: 2000
+Best score: 12.0
+Best string: \OFB ihha(g'C#pMyl^mE,pGùPt@tpW,àaQta?hvGls@mnlD)z^l!)eBéà?@dkNuTxz?Oa%s+';nEL
 
-Starting plot, please wait!
-Plot done!
-Energy consumption in joules: 920.3448061895374 for 36.28826 sec of execution.
+Generation: 20
+Total Population: 4000
+Best score: 19.0
+Best string: TOFB ihha(g'K#pMylHEFAàBqFt@tpWeàaQta?jX$Uo+pibBh.e/b&WDò ?@dkNutxz?Oa%s+';nEL
+
+Generation: 30
+Total Population: 6000
+Best score: 21.0
+Best string: TOFB ihpa(g'C#pMylHEFAàBqFtotp eàaQta?hX$Uo+pibmSQPdoO)eR ?@dkNutxz?Oa%s+';nEL
+
+Generation: 40
+Total Population: 8000
+Best score: 23.0
+Best string: TOFB ihpa(g+K#p%ylHEFAàBqFtotp eàaQta?hX$Uo+pibmSQPùoO;eR ?ndkNutxz?Oa%stB;nEL
+
+Generation: 50
+Total Population: 10000
+Best score: 26.0
+Best string: T€Fg ihpa(g'C#SMylHlFHlBq$totp eàaQta?hX$UoNbibmSQPùog;eR ?ndkNutgz?Oa%str;nEL
+
+Generation: 60
+Total Population: 12000
+Best score: 28.0
+Best string: ThFB ihpa(g+C#pMylHlFHlPq$totp eàaQta?hX$Uo+bi(mSQPdogve. éndk+utgz?Oa%str;nEL
+
+Generation: 70
+Total Population: 14000
+Best score: 29.0
+Best string: ThFB ih'a(g+C#pMylHlFHlBM$totp eàalta?hX$Uo+bibmSd,ùogve. ?ndk+utgz?Oa%str;nEL
+
+Generation: 80
+Total Population: 16000
+Best score: 31.0
+Best string: ThFB ihpa(g+C$piylHlFHlBM$totp eàaltathX$Uo+bibmSQPùogve. Qndk+utòz?ea%strqnEL
+
+Generation: 90
+Total Population: 18000
+Best score: 33.0
+Best string: ThF^ ihpa(g+C$piylHlFHlBt$,ot) elaltathX$Uo+bibm,QPùogve. QndkgutgF?Oa%str;nEL
+
+Generation: 100
+Total Population: 20000
+Best score: 36.0
+Best string: ThF^ ippa(g+C$piyxHlFopBt$éoto elaltathX$ro+bi =SQeùogve. Qndk+utaz?ya%str;nEL
+
+Generation: 110
+Total Population: 22000
+Best score: 39.0
+Best string: ThT^ ih a(g+C$piyl€lFopBt$éoto elaltatheQUo+bibm,Qetogve. Qndkmutaz?ya%str;nEL
+
+Generation: 120
+Total Population: 24000
+Best score: 41.0
+Best string: ThT^ ih a(g+C$piyl€lFopBt$éoto elalàateX$ro+biGm, etogve. Qndkmuta\?ya%str;nEL
+
+Generation: 130
+Total Population: 26000
+Best score: 40.0
+Best string: ThT^ iu a(g+è$piylHlFopBt$éoto elaltate'$ro+biGm,QetoGven Qndkmuta\?ya%str;nEL
+
+Generation: 140
+Total Population: 28000
+Best score: 40.0
+Best string: ThT^ ia a^g+è$uiylHlFopBt$éoto elalèateD$ro+biGm,QetoGven Qndkmuta\?ya%str;nEL
+
+Generation: 150
+Total Population: 30000
+Best score: 42.0
+Best string: ThTl ia a^g+C$piylHlFopBt$é to elaltateX ro?biGm,Qeto/ven Qndkmuta\?ya%str;nEL
+
+Generation: 160
+Total Population: 32000
+Best score: 45.0
+Best string: Thil ia a^gJ&$piyO;lAorit$é to elaljateX ro?biGm,Qeto/ven Qndkmuta\?ya%str;nEL
+
+Generation: 170
+Total Population: 34000
+Best score: 45.0
+Best string: Thil ia a^g+è$piylHlFopit$m to elaltateX ro?biGn,Qetomven Qndkmuta\?ya%str;nEL
+
+Generation: 180
+Total Population: 36000
+Best score: 46.0
+Best string: Thil il a^g+è$piylHlFopit$m to elaltateX ro?biGn,Qeto/ven Qndkmuta\?ya str;nEL
+
+Generation: 190
+Total Population: 38000
+Best score: 46.0
+Best string: Thil ia a^g+è$piylHlFopit$m to elaltateX bo?biGn,&eto/ven Qndkmuta\Bya str;nEL
+
+Generation: 200
+Total Population: 40000
+Best score: 46.0
+Best string: Thil ia a^g+è$piylHlFopitqm to elaltateX bozbiGn,Qeto/ven Qndkmuta\Bya str;nEL
+
+Generation: 210
+Total Population: 42000
+Best score: 47.0
+Best string: Thiu ia a^g+è$piylHlFopitqm to elaltateX MozbiGn,Qeto/ven Qndkmuta\eya str;nEL
+
+Generation: 220
+Total Population: 44000
+Best score: 46.0
+Best string: Thiu ia a^g+è$FiyYHlFopitqm to elaltateX bozbiGn,Qeto/veV Qndkmuta\Bya str;nEL
+
+Generation: 230
+Total Population: 46000
+Best score: 48.0
+Best string: Thi$ ia a^g+èeFiyYHlFopitqm to elaltates bombiGn,Qeto/ven Qndkmuta\Bya str#nE+
+
+Generation: 240
+Total Population: 48000
+Best score: 49.0
+Best string: Thi$ ia a^g+èeFiyYHlFopithm to elaltates bombiGn,Qeto/ven Qndkmuta\Bya str.nE+
+
+Generation: 250
+Total Population: 50000
+Best score: 50.0
+Best string: Thi$ ia a^g+èeFiyYalFopithm to elaltates bombiGn,Qeqo/ven Qndkmuta\Bya str,nE+
+
+Generation: 260
+Total Population: 52000
+Best score: 52.0
+Best string: Thi$ ia a^g+èeHiyYalFopithm to elaltates bombiGD,setolven andkmuta\Iya str,nE+
+
+Generation: 270
+Total Population: 54000
+Best score: 53.0
+Best string: Thi$ ir a^g+èetiyYalFopithm to eLaltates bombiGn,setolven andkmuta\Iya str,nE+
+
+Generation: 280
+Total Population: 56000
+Best score: 54.0
+Best string: Thi- ir a^g+èetiyYalFopithm to elaltates bombiGn,setolven andkmuta\Iya strinj+
+
+Generation: 290
+Total Population: 58000
+Best score: 57.0
+Best string: Thi- ir a g+Teti,ValGouithm to elaltates combiGe,setolven andkmutamIya strinj+
+
+Generation: 300
+Total Population: 60000
+Best score: 58.0
+Best string: Thi- ir a g+Teti,YalGouithm to elaluates combiGe,setolven andumutamIya strinj+
+
+Generation: 310
+Total Population: 62000
+Best score: 59.0
+Best string: Thi- ir a g+weti,YalSouithm to elaluates combiGe,setolven and mutamISa strinj+
+
+Generation: 320
+Total Population: 64000
+Best score: 60.0
+Best string: This ie a g+Teti,YalSouithm to elaluates combiLe,setolven and mutamISa strino+
+
+Generation: 330
+Total Population: 66000
+Best score: 61.0
+Best string: This ie a g+Teti,YalSoUithm to elaluate, combiLe,Tetolven and mutamISa strino+
+
+Generation: 340
+Total Population: 68000
+Best score: 61.0
+Best string: This ie a g+TetiTYalSorithm to elaluates combife,setolven and mutamISa strin%+
+
+Generation: 350
+Total Population: 70000
+Best score: 61.0
+Best string: This ie a gùTeti,YalSorithm to elaluates combife,setolvee and mutamISa strino+
+
+Generation: 360
+Total Population: 72000
+Best score: 61.0
+Best string: This ie a géTeti,YalSorithm to elaluateW combife,setolven and mutamrSa strin%+
+
+Generation: 370
+Total Population: 74000
+Best score: 62.0
+Best string: This ie a g+Teti,YalSorithm to elaluates combife,setolven and mutamrSa strino!
+
+Generation: 380
+Total Population: 76000
+Best score: 63.0
+Best string: This ie a g+TetiXYalSorithm to elaluates combife,setolven and mutaEr a strino!
+
+Generation: 390
+Total Population: 78000
+Best score: 63.0
+Best string: This ie a g+xetiXYalSorithm to elaluates combife,setolven and mutaEg a strino!
+
+Generation: 400
+Total Population: 80000
+Best score: 63.0
+Best string: This ie a g+TetiXYalXorithm to e#aluateO combi^e,setolven and mutaEg a strino!
+
+Generation: 410
+Total Population: 82000
+Best score: 63.0
+Best string: This ie a g+€etiXYalSorithm to elaluateO combide,setolven and mutaUr a strino!
+
+Generation: 420
+Total Population: 84000
+Best score: 64.0
+Best string: This ie a g+€etirPalXorithm to ebaluates combide,setolven and mutatr a strino!
+
+Generation: 430
+Total Population: 86000
+Best score: 65.0
+Best string: This ie a g+YetirPalXorithm to elaluates combine,setolven and mutatr a strino!
+
+Generation: 440
+Total Population: 88000
+Best score: 66.0
+Best string: This ie a g+YetirPalXorithm to elaluate, combine,setolven and mutatr a strin !
+
+Generation: 450
+Total Population: 90000
+Best score: 66.0
+Best string: This iN a g+YetirPalXorithm to elaluate, combine,detolven and mutatr a strino!
+
+Generation: 460
+Total Population: 92000
+Best score: 67.0
+Best string: This iN a gZnetirPalXorithm to elaluate, combine,detolven and mutatr a strino!
+
+Generation: 470
+Total Population: 94000
+Best score: 67.0
+Best string: This iN a gZnetirPalXorithm to elaluate, combine,detolven and mutatr a strino!
+
+Generation: 480
+Total Population: 96000
+Best score: 67.0
+Best string: This iN a g(netirPalXorithm to elaluate, combine,detolven and mutatr a strino!
+
+Generation: 490
+Total Population: 98000
+Best score: 68.0
+Best string: This is a g(netirPalXorithm to elaluate, combine,setolve! and mutatr a strinf!
+
+Generation: 500
+Total Population: 100000
+Best score: 68.0
+Best string: This is a g(netirPalXorithm to elaluate, combine,+eNolveN and mutatr a strinè!
+
+Generation: 510
+Total Population: 102000
+Best score: 68.0
+Best string: This is a g(netirPalXorithm to elaluate, combine,deNolveN and mutatr a strinO!
+
+Generation: 520
+Total Population: 104000
+Best score: 68.0
+Best string: This is a g(netir£alXorithm to e&aluate, combine,deNolveN and mutatr a strino!
+
+Generation: 530
+Total Population: 106000
+Best score: 68.0
+Best string: This is a g(netir£alqorithm to e&aluate, combine,deNolveN and mutatr a strino!
+
+Generation: 540
+Total Population: 108000
+Best score: 68.0
+Best string: This is a gNnetir£alqorithm to e&aluate, combine,deNolveN and mutatr a strino!
+
+Generation: 550
+Total Population: 110000
+Best score: 68.0
+Best string: This is a g(netir£alXorithm to e&aluate, combine,deNolveN and mutatr a strino!
+
+Generation: 560
+Total Population: 112000
+Best score: 69.0
+Best string: This is a gYnetir£alqorithm to e€aluate, combine, eNolveN and mutatr a strino!
+
+Generation: 570
+Total Population: 114000
+Best score: 68.0
+Best string: This is a g(netir£alqorithm to e€aluate, combine,deNolve; and mutatw a strino!
+
+Generation: 580
+Total Population: 116000
+Best score: 68.0
+Best string: This is a g(netir£alqorithm to e€aluate, combine,deNolveY and mutatr a strino!
+
+Generation: 590
+Total Population: 118000
+Best score: 69.0
+Best string: This is a g(netir£alqorithm to e€aluate, combine,!eNolveN and mutate a strino!
+
+Generation: 600
+Total Population: 120000
+Best score: 69.0
+Best string: This is a ginetir£alqorithm to e€aluate, combine,!e*olveN and mutate a strino!
+
+Generation: 610
+Total Population: 122000
+Best score: 69.0
+Best string: This is a g(netir£alqorithm to e€aluate, combine,!e'olveY and mutate a strino!
+
+Generation: 620
+Total Population: 124000
+Best score: 69.0
+Best string: This is a g(netir£alqorithm to e€aluate, combine,!eNolveN and mutate a strino!
+
+Generation: 630
+Total Population: 126000
+Best score: 70.0
+Best string: This is a g(netir*alqorithm to e€aluate, combine,!eNolve, and mutate a strino!
+
+Generation: 640
+Total Population: 128000
+Best score: 70.0
+Best string: This is a g(netirJalqorithm to e€aluate, combine,FeNolve, and mutate a strin'!
+
+Generation: 650
+Total Population: 130000
+Best score: 70.0
+Best string: This is a g(netirJalqorithm to e€aluate, combine,FeNolve, and mutate a strino!
+
+Generation: 660
+Total Population: 132000
+Best score: 70.0
+Best string: This is a g(netirJalqorithm to e€aluate, combine,ieNolve, and mutate a strino!
+
+Generation: 670
+Total Population: 134000
+Best score: 70.0
+Best string: This is a gbnetir£alqorithm to e€aluate, combine,FeNolve, and mutate a strino!
+
+Generation: 680
+Total Population: 136000
+Best score: 71.0
+Best string: This is a g(netir*alqorithm to e€aluate, combine, eNolve, and mutate a strino!
+
+Generation: 690
+Total Population: 138000
+Best score: 72.0
+Best string: This is a g(netir*alqorithm to e€aluate, combine, evolve, and mutate a strino!
+
+Generation: 700
+Total Population: 140000
+Best score: 72.0
+Best string: This is a g(netir*alqorithm to e€aluate, combine, evolve, and mutate a strino!
+
+Generation: 710
+Total Population: 142000
+Best score: 72.0
+Best string: This is a gfnetir*alqorithm to e€aluate, combine, evolve, and mutate a strino!
+
+Generation: 720
+Total Population: 144000
+Best score: 72.0
+Best string: This is a g(netir*alqorithm to e€aluate, combine, evolve, and mutate a strino!
+
+Generation: 730
+Total Population: 146000
+Best score: 72.0
+Best string: This is a g(netirgalqorithm to exaluate, combine, evolve, and mutate a strino!
+
+Generation: 740
+Total Population: 148000
+Best score: 72.0
+Best string: This is a g(netirgalqorithm to exaluate, combine, evolve, and mutate a strino!
+
+Generation: 750
+Total Population: 150000
+Best score: 73.0
+Best string: This is a g(netirgalqorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 760
+Total Population: 152000
+Best score: 73.0
+Best string: This is a g(netirgalqorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 770
+Total Population: 154000
+Best score: 73.0
+Best string: This is a g(netirgalqorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 780
+Total Population: 156000
+Best score: 73.0
+Best string: This is a g(netirgalqorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 790
+Total Population: 158000
+Best score: 74.0
+Best string: This is a g(netirgalgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 800
+Total Population: 160000
+Best score: 74.0
+Best string: This is a g(netirgalgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 810
+Total Population: 162000
+Best score: 74.0
+Best string: This is a g(netirgalgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 820
+Total Population: 164000
+Best score: 74.0
+Best string: This is a g(neti#galgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 830
+Total Population: 166000
+Best score: 74.0
+Best string: This is a g(netirgalgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 840
+Total Population: 168000
+Best score: 74.0
+Best string: This is a g(netirkalgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 850
+Total Population: 170000
+Best score: 74.0
+Best string: This is a g(netirgalgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 860
+Total Population: 172000
+Best score: 74.0
+Best string: This is a g(netirgalgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 870
+Total Population: 174000
+Best score: 74.0
+Best string: This is a g(netirgalgorithm to evaluate, combine, evolve, and mutate a strin?!
+
+Generation: 880
+Total Population: 176000
+Best score: 75.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a strin@!
+
+Generation: 890
+Total Population: 178000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 900
+Total Population: 180000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 910
+Total Population: 182000
+Best score: 76.0
+Best string: This is a geneti%galgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 920
+Total Population: 184000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 930
+Total Population: 186000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 940
+Total Population: 188000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 950
+Total Population: 190000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 960
+Total Population: 192000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 970
+Total Population: 194000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 980
+Total Population: 196000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 990
+Total Population: 198000
+Best score: 76.0
+Best string: This is a genetirSalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 1000
+Total Population: 200000
+Best score: 76.0
+Best string: This is a genetiEgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 1010
+Total Population: 202000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 1020
+Total Population: 204000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 1030
+Total Population: 206000
+Best score: 77.0
+Best string: This is a geneticgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 1040
+Total Population: 208000
+Best score: 76.0
+Best string: This is a genetirgalgorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 1050
+Total Population: 210000
+Best score: 77.0
+Best string: This is a genetir algorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 1060
+Total Population: 212000
+Best score: 77.0
+Best string: This is a genetir algorithm to evaluate, combine, evolve, and mutate a string!
+
+Generation: 1068
+Total Population: 213600
+Target: This is a genetic algorithm to evaluate, combine, evolve, and mutate a string!
+Energy consumption in joules: 4277.779831914898 for 87.01813 sec of execution.
