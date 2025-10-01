@@ -16,6 +16,7 @@ import time
 import subprocess
 import shlex
 import glob
+from os.path import expanduser
 
 LAPTOP_SSH = "ssh -i ~/.ssh/kwang kellywang@192.168.178.96"
 REMOTE_REPO = "/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab"
@@ -121,33 +122,37 @@ class RunnerConfig:
             if factor_name == "python_file":
                 py_file = Path(self.BENCHMARKS_DIR / factor_value)
                 break
-
         if not py_file or not py_file.exists():
             raise FileNotFoundError(f"Python file not found: {py_file}")
 
-        rel_path = py_file.relative_to(self.BENCHMARKS_DIR)
+        rel_path = py_file.relative_to(self.BENCHMARKS_DIR)  # e.g. ant_colony_optimization/.../foo.py
+
+        # --- Correct remote paths (keep benchmarks/ prefix) ---
+        remote_script = f"{REMOTE_REPO}/benchmarks/{rel_path}"
         remote_results_dir = f"{REMOTE_REPO}/Results/{self.name}"
         remote_output = f"{remote_results_dir}/{py_file.stem}.csv"
-        remote_script = f"{REMOTE_REPO}/{rel_path}"
+        venv_python = f"{REMOTE_REPO}/venv/bin/python3"
+        activate = f"{REMOTE_REPO}/venv/bin/activate"
 
+        # Build robust remote command
         remote_cmd = (
             f"cd {shlex.quote(REMOTE_REPO)} && "
-            f"source venv/bin/activate && "
+            f'export PATH=\"$HOME/.cargo/bin:$PATH\" && '
+            f"if [ -x {shlex.quote(venv_python)} ]; then :; "
+            f"elif [ -f {shlex.quote(activate)} ]; then . {shlex.quote(activate)}; "
+            f"else echo 'ERROR: venv not found at {activate}' >&2; exit 1; fi && "
+            f"sudo -n true || (echo 'ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics' >&2; exit 1); "
             f"mkdir -p {shlex.quote(remote_results_dir)} && "
-            f"energibridge --summary -o {shlex.quote(remote_output)} "
-            f"python3 {shlex.quote(remote_script)}"
+            f"sudo -n energibridge --summary -o {shlex.quote(remote_output)} "
+            f"{shlex.quote(venv_python)} {shlex.quote(remote_script)}"
         )
 
         output.console_log(f"[start_measurement] Running benchmark: {py_file.name}")
         output.console_log(f"[start_measurement] SSH command: {remote_cmd}")
 
+        # Use your 'macbook' SSH alias so no -i path issues
         self.profiler = subprocess.Popen(
-            [
-                "ssh",
-                "-i", "/home/pi/.ssh/kwang",
-                "kellywang@192.168.178.96",
-                "bash", "-lc", remote_cmd
-            ],
+            ["ssh", "macbook", "bash", "-lc", remote_cmd],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             bufsize=1,
@@ -158,6 +163,7 @@ class RunnerConfig:
             for line in self.profiler.stdout:
                 print(f"[macbook] {line.strip()}", flush=True)
                 logf.write(line)
+
 
 
     def interact(self, context: RunnerContext) -> None:
@@ -189,8 +195,7 @@ class RunnerConfig:
         subprocess.run(
             [
                 "rsync", "-av",
-                "-e", "ssh -i ~/.ssh/kwang",
-                f"kellywang@192.168.178.96:{remote_output}",
+                f"macbook:{remote_output}",
                 str(local_results_dir / f"{py_file.stem}.csv"),
             ],
             check=True
