@@ -8,9 +8,6 @@ Author: D4rkia
 from __future__ import annotations
 
 import random
-import concurrent.futures
-from functools import lru_cache
-from typing import Dict, List, Tuple
 
 # Maximum size of the population.  Bigger could be faster but is more memory expensive.
 N_POPULATION = 200
@@ -23,12 +20,7 @@ MUTATION_PROBABILITY = 0.4
 # Just a seed to improve randomness required by the algorithm.
 random.seed(random.randint(0, 1000))
 
-# Cache for frequently used computations
-EVALUATION_CACHE: Dict[str, float] = {}
-POPULATION_THIRD = N_POPULATION // 3
 
-
-@lru_cache(maxsize=10000)
 def evaluate(item: str, main_target: str) -> tuple[str, float]:
     """
     Evaluate how similar the item is with the target by just
@@ -36,15 +28,7 @@ def evaluate(item: str, main_target: str) -> tuple[str, float]:
     >>> evaluate("Helxo Worlx", "Hello World")
     ('Helxo Worlx', 9.0)
     """
-    # G1: Store repeated expressions in variables
-    target_length = len(main_target)
-    
-    # G4: Use short-circuit evaluation for early termination
-    if len(item) != target_length:
-        return (item, 0.0)
-    
-    # G6: Avoid redundant computations by using bulk operations
-    score = sum(1 for position, g in enumerate(item) if g == main_target[position])
+    score = len([g for position, g in enumerate(item) if g == main_target[position]])
     return (item, float(score))
 
 
@@ -68,16 +52,9 @@ def mutate(child: str, genes: list[str]) -> str:
     >>> mutate("123456", list("ABCDEF"))
     '12345A'
     """
-    # G1: Store repeated expressions in variables
-    child_length = len(child)
-    
-    # G4: Use short-circuit evaluation
-    if random.uniform(0, 1) >= MUTATION_PROBABILITY:
-        return child
-    
-    # G6: Avoid redundant list conversion
     child_list = list(child)
-    child_list[random.randint(0, child_length - 1)] = random.choice(genes)
+    if random.uniform(0, 1) < MUTATION_PROBABILITY:
+        child_list[random.randint(0, len(child)) - 1] = random.choice(genes)
     return "".join(child_list)
 
 
@@ -103,26 +80,17 @@ def select(
     >>> len(population) == (int(parent_1[1]) + 1) * 2
     True
     """
-    # G1: Store repeated expressions in variables
-    parent_1_str = parent_1[0]
-    parent_1_score = parent_1[1]
-    
-    # G3: Loop optimization - store end condition
-    child_n = min(int(parent_1_score * 100) + 1, 10)
-    
-    # G7: Use bulk operations for better performance
     pop = []
+    # Generate more children proportionally to the fitness score.
+    child_n = int(parent_1[1] * 100) + 1
+    child_n = 10 if child_n >= 10 else child_n
     for _ in range(child_n):
-        # G4: Use short-circuit evaluation
-        if not population_score:
-            break
-            
-        parent_2 = population_score[random.randint(0, min(N_SELECTED, len(population_score) - 1))][0]
-        child_1, child_2 = crossover(parent_1_str, parent_2)
-        
-        # G7: Bulk append operations
-        pop.extend([mutate(child_1, genes), mutate(child_2, genes)])
-    
+        parent_2 = population_score[random.randint(0, N_SELECTED)][0]
+
+        child_1, child_2 = crossover(parent_1[0], parent_2)
+        # Append new string to the population list.
+        pop.append(mutate(child_1, genes))
+        pop.append(mutate(child_2, genes))
     return pop
 
 
@@ -161,75 +129,69 @@ def basic(target: str, genes: list[str], debug: bool = True) -> tuple[int, int, 
         msg = f"{not_in_genes_list} is not in genes list, evolution cannot converge"
         raise ValueError(msg)
 
-    # G1: Store repeated expressions in variables
-    target_length = len(target)
-    
-    # G7: Use bulk operations for population generation
-    def generate_individual():
-        return "".join(random.choice(genes) for _ in range(target_length))
-    
-    # G7: Bulk population generation
-    population = [generate_individual() for _ in range(N_POPULATION)]
+    # Generate random starting population.
+    population = []
+    for _ in range(N_POPULATION):
+        population.append("".join([random.choice(genes) for i in range(len(target))]))
 
-    # G1: Store repeated expressions in variables
+    # Just some logs to know what the algorithms is doing.
     generation, total_population = 0, 0
-    population_size = len(population)
 
-    # G3: Loop optimization with early termination
+    # This loop will end when we find a perfect match for our target.
     while True:
         generation += 1
-        total_population += population_size
+        total_population += len(population)
 
-        # G12: Enable multithreading for evaluation
-        def evaluate_population():
-            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-                futures = {executor.submit(evaluate, item, target): item for item in population}
-                return [future.result() for future in concurrent.futures.as_completed(futures)]
-        
-        # G7: Use bulk operations for evaluation
-        population_score = evaluate_population()
+        # Random population created. Now it's time to evaluate.
 
-        # G1: Store repeated expressions in variables
+        # (Option 1) Adding a bit of concurrency can make everything faster,
+        #
+        # import concurrent.futures
+        # population_score: list[tuple[str, float]] = []
+        # with concurrent.futures.ThreadPoolExecutor(
+        #                                   max_workers=NUM_WORKERS) as executor:
+        #     futures = {executor.submit(evaluate, item, target) for item in population}
+        #     concurrent.futures.wait(futures)
+        #     population_score = [item.result() for item in futures]
+        #
+        # but with a simple algorithm like this, it will probably be slower.
+        # (Option 2) We just need to call evaluate for every item inside the population.
+        population_score = [evaluate(item, target) for item in population]
+
+        # Check if there is a matching evolution.
         population_score = sorted(population_score, key=lambda x: x[1], reverse=True)
-        best_individual = population_score[0]
-        best_string = best_individual[0]
-        best_score = best_individual[1]
+        if population_score[0][0] == target:
+            return (generation, total_population, population_score[0][0])
 
-        # G4: Use short-circuit evaluation for early termination
-        if best_string == target:
-            return (generation, total_population, best_string)
-
-        # G6: Avoid redundant computations
+        # Print the best result every 10 generation.
+        # Just to know that the algorithm is working.
         if debug and generation % 10 == 0:
             print(
                 f"\nGeneration: {generation}"
-                f"\nTotal Population: {total_population}"
-                f"\nBest score: {best_score}"
-                f"\nBest string: {best_string}"
+                f"\nTotal Population:{total_population}"
+                f"\nBest score: {population_score[0][1]}"
+                f"\nBest string: {population_score[0][0]}"
             )
 
-        # G1: Use pre-computed constant
-        population_best = population[:POPULATION_THIRD]
+        # Flush the old population, keeping some of the best evolutions.
+        # Keeping this avoid regression of evolution.
+        population_best = population[: int(N_POPULATION / 3)]
         population.clear()
         population.extend(population_best)
-        
-        # G6: Avoid redundant division
-        target_length_inv = 1.0 / target_length
+        # Normalize population score to be between 0 and 1.
         population_score = [
-            (item, score * target_length_inv) for item, score in population_score
+            (item, score / len(target)) for item, score in population_score
         ]
 
-        # G3: Loop optimization with early termination
-        # G7: Use bulk operations for selection
-        new_population = []
+        # This is selection
         for i in range(N_SELECTED):
-            new_population.extend(select(population_score[i], population_score, genes))
-            # G3: Early termination condition
-            if len(new_population) > N_POPULATION:
+            population.extend(select(population_score[int(i)], population_score, genes))
+            # Check if the population has already reached the maximum value and if so,
+            # break the cycle.  If this check is disabled, the algorithm will take
+            # forever to compute large strings, but will also calculate small strings in
+            # a far fewer generations.
+            if len(population) > N_POPULATION:
                 break
-        
-        population.extend(new_population)
-        population_size = len(population)
 
 
 if __name__ == "__main__":
