@@ -267,3 +267,5 @@ if __name__ == "__main__":
     print(
         f"\nGeneration: {generation}\nTotal Population: {population}\nTarget: {target}"
     )
+
+

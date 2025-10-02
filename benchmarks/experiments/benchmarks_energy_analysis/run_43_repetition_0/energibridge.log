@@ -1,51 +1,6 @@
-Hello!
-Start test SVM using the SMO algorithm!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-Scanning all samples!
-Scanning non-bound samples!
-All non-bound samples satisfy the KKT condition!
-All samples satisfy the KKT condition!
-Optimization done!
-Every sample satisfy the KKT condition!
-
-All: 241
-Correct: 238
-Incorrect: 3
-Rough Accuracy: 0.9875518672199171
-SMO algorithm cost 0.6063189506530762 seconds
-
-Starting plot, please wait!
-Plot done!
-Energy consumption in joules: 729.8038926162719 for 37.08105 sec of execution.
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+  File "/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab/benchmarks/linear_discriminant_analysis/linear_discriminant_analysis_G6.py", line 151
+    for j in range(len(items[i])):
+IndentationError: expected an indented block after 'for' statement on line 149
+Energy consumption in joules: 0.14630675733089446 for 0.23032808 sec of execution.

@@ -138,7 +138,7 @@ class CNN:
         # expanding the data slice to one dimension
         focus1_list = []
         for each_focus in data_focus:
-            focus1_list.extend(self.Expand_Mat(each_focus))
+            focus1_list.extend(self._expand_mat(each_focus))
         focus_list = np.asarray(focus1_list)
         return focus_list, data_featuremap
 
@@ -241,9 +241,7 @@ class CNN:
                 print('  -----after pooling  ',np.shape(data_pooled1))
                """
                 data_bp_input = self._expand(data_pooled1)
-                bp_out1 = data_bp_input
-
-                bp_net_j = np.dot(bp_out1, self.vji.T) - self.thre_bp2
+                bp_net_j = np.dot(data_bp_input, self.vji.T) - self.thre_bp2
                 bp_out2 = self.sig(bp_net_j)
                 bp_net_k = np.dot(bp_out2, self.wkj.T) - self.thre_bp3
                 bp_out3 = self.sig(bp_net_k)
@@ -283,12 +281,11 @@ class CNN:
                     )
                 # all connected layer
                 self.wkj = self.wkj + pd_k_all.T * bp_out2 * self.rate_weight
-                self.vji = self.vji + pd_j_all.T * bp_out1 * self.rate_weight
+                self.vji = self.vji + pd_j_all.T * data_bp_input * self.rate_weight
                 self.thre_bp3 = self.thre_bp3 - pd_k_all * self.rate_thre
                 self.thre_bp2 = self.thre_bp2 - pd_j_all * self.rate_thre
                 # calculate the sum error of all single image
-                errors = np.sum(abs(data_teach - bp_out3))
-                error_count += errors
+                error_count += np.sum(abs(data_teach - bp_out3))
                 # print('   ----Teach      ',data_teach)
                 # print('   ----BP_output  ',bp_out3)
             rp = rp + 1
@@ -312,7 +309,7 @@ class CNN:
 
     def predict(self, datas_test):
         # model predict
-        produce_out = []
+        outs = []
         print("-------------------Start Testing-------------------------")
         print((" - - Shape: Test_Data  ", np.shape(datas_test)))
         for p in range(len(datas_test)):
@@ -326,15 +323,13 @@ class CNN:
             )
             data_pooled1 = self.pooling(data_conved1, self.size_pooling1)
             data_bp_input = self._expand(data_pooled1)
-
-            bp_out1 = data_bp_input
-            bp_net_j = bp_out1 * self.vji.T - self.thre_bp2
+            bp_net_j = data_bp_input * self.vji.T - self.thre_bp2
             bp_out2 = self.sig(bp_net_j)
             bp_net_k = bp_out2 * self.wkj.T - self.thre_bp3
             bp_out3 = self.sig(bp_net_k)
-            produce_out.extend(bp_out3.getA().tolist())
-        res = [list(map(self.do_round, each)) for each in produce_out]
-        return np.asarray(res)
+            outs.append(bp_out3.getA())
+        res = np.vstack(outs)
+        return np.round(np.asarray(res), 3)
 
     def convolution(self, data):
         # return the data of image after convoluting process so we can check it out

@@ -1,2 +1,6 @@
-1259187438574927161
-Energy consumption in joules: 5.531152038574218 for 0.4173039 sec of execution.
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+  File "/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab/benchmarks/linear_discriminant_analysis/linear_discriminant_analysis_OPTIMIZED.py", line 262
+    try:
+IndentationError: expected an indented block after 'while' statement on line 261
+Energy consumption in joules: 0.17988773703575134 for 0.23332912 sec of execution.
