@@ -1,0 +1,92 @@
+Benchmark,Variant,N,Outliers (Moderate),Outliers (Extreme),Outlier Rate (%),CV (%),Stability
+ant_colony_optimization_algorithms,BASELINE,10,3,2,30.0,21.12,Variable
+ant_colony_optimization_algorithms,G1,10,0,0,0.0,11.37,Moderate
+ant_colony_optimization_algorithms,G12,10,0,0,0.0,15.62,Moderate
+ant_colony_optimization_algorithms,G14,10,2,2,20.0,13.80,Moderate
+ant_colony_optimization_algorithms,G3,10,0,0,0.0,16.28,Moderate
+ant_colony_optimization_algorithms,G4,10,0,0,0.0,14.07,Moderate
+ant_colony_optimization_algorithms,G6,10,0,0,0.0,15.73,Moderate
+ant_colony_optimization_algorithms,G7,10,2,2,20.0,12.85,Moderate
+ant_colony_optimization_algorithms,G9,10,2,2,20.0,12.12,Moderate
+ant_colony_optimization_algorithms,OPTIMIZED,10,1,0,10.0,15.81,Moderate
+basic_string,BASELINE,10,2,0,20.0,14.61,Moderate
+basic_string,G1,10,0,0,0.0,17.95,Moderate
+basic_string,G12,10,1,0,10.0,43.94,High Var
+basic_string,G14,10,0,0,0.0,18.99,Moderate
+basic_string,G3,10,1,0,10.0,28.76,Variable
+basic_string,G4,10,0,0,0.0,34.84,High Var
+basic_string,G6,10,1,0,10.0,35.62,High Var
+basic_string,G7,10,0,0,0.0,25.11,Variable
+basic_string,G9,10,0,0,0.0,29.64,Variable
+basic_string,OPTIMIZED,10,0,0,0.0,17.47,Moderate
+convolution_neural_network,BASELINE,10,2,0,20.0,9.63,Stable
+convolution_neural_network,G1,10,1,0,10.0,12.10,Moderate
+convolution_neural_network,G14,10,2,0,20.0,11.84,Moderate
+convolution_neural_network,G3,10,0,0,0.0,14.88,Moderate
+convolution_neural_network,G4,10,2,2,20.0,12.08,Moderate
+convolution_neural_network,G6,10,1,1,10.0,9.06,Stable
+convolution_neural_network,G7,10,0,0,0.0,22.19,Variable
+convolution_neural_network,OPTIMIZED,10,0,0,0.0,15.78,Moderate
+kmeans,BASELINE,10,1,0,10.0,13.51,Moderate
+kmeans,G1,10,2,2,20.0,10.97,Moderate
+kmeans,G12,10,2,0,20.0,8.26,Stable
+kmeans,G14,10,2,1,20.0,12.65,Moderate
+kmeans,G3,10,1,0,10.0,7.98,Stable
+kmeans,G6,10,1,0,10.0,8.28,Stable
+kmeans,G7,10,1,0,10.0,4.68,Stable
+kmeans,G9,10,0,0,0.0,7.99,Stable
+kmeans,OPTIMIZED,10,1,0,10.0,13.38,Moderate
+linear_discriminant_analysis,BASELINE,10,0,0,0.0,4.08,Stable
+linear_discriminant_analysis,G1,10,2,1,20.0,8.67,Stable
+linear_discriminant_analysis,G12,10,1,0,10.0,5.66,Stable
+linear_discriminant_analysis,G14,10,0,0,0.0,4.11,Stable
+linear_discriminant_analysis,G3,10,0,0,0.0,4.99,Stable
+linear_discriminant_analysis,G4,10,2,0,20.0,4.22,Stable
+linear_discriminant_analysis,G6,10,1,0,10.0,27.07,Variable
+linear_discriminant_analysis,G7,10,1,1,10.0,11.66,Moderate
+linear_discriminant_analysis,G9,10,2,2,20.0,18.02,Moderate
+linear_discriminant_analysis,OPTIMIZED,10,1,1,10.0,11.28,Moderate
+n_body_simulation,BASELINE,10,2,0,20.0,12.48,Moderate
+n_body_simulation,G1,10,0,0,0.0,16.31,Moderate
+n_body_simulation,G12,10,2,1,20.0,10.20,Moderate
+n_body_simulation,G14,10,1,1,10.0,10.92,Moderate
+n_body_simulation,G3,10,1,1,10.0,12.12,Moderate
+n_body_simulation,G4,10,1,0,10.0,10.27,Moderate
+n_body_simulation,G6,10,1,1,10.0,9.81,Stable
+n_body_simulation,G7,10,2,2,20.0,12.81,Moderate
+n_body_simulation,G9,10,2,2,20.0,20.85,Variable
+n_body_simulation,OPTIMIZED,10,1,1,10.0,10.51,Moderate
+sequential_minimum_optimization,BASELINE,10,1,1,10.0,3.29,Stable
+sequential_minimum_optimization,G1,10,1,0,10.0,4.84,Stable
+sequential_minimum_optimization,G14,10,0,0,0.0,2.40,Stable
+sequential_minimum_optimization,G3,10,1,0,10.0,1.27,Stable
+sequential_minimum_optimization,G4,10,2,1,20.0,2.54,Stable
+sequential_minimum_optimization,G6,10,3,2,30.0,3.05,Stable
+sequential_minimum_optimization,G7,10,1,0,10.0,7.84,Stable
+sequential_minimum_optimization,OPTIMIZED,10,1,0,10.0,15.18,Moderate
+sol1,BASELINE,10,3,3,30.0,14.70,Moderate
+sol1,G1,10,1,1,10.0,14.89,Moderate
+sol1,G12,10,1,0,10.0,4.16,Stable
+sol1,G14,10,0,0,0.0,29.54,Variable
+sol1,G3,10,3,3,30.0,31.86,High Var
+sol1,G4,10,2,0,20.0,28.52,Variable
+sol1,G6,10,4,3,40.0,23.04,Variable
+sol1,G7,10,4,4,40.0,36.12,High Var
+sol1,G9,10,3,2,30.0,21.40,Variable
+sol1,OPTIMIZED,10,1,1,10.0,5.79,Stable
+sol1_problem180,BASELINE,10,0,0,0.0,25.83,Variable
+sol1_problem180,G1,10,3,3,30.0,30.06,High Var
+sol1_problem180,G12,10,3,2,30.0,27.20,Variable
+sol1_problem180,G14,10,4,2,40.0,25.98,Variable
+sol1_problem180,G3,10,4,3,40.0,26.10,Variable
+sol1_problem180,G4,10,0,0,0.0,28.77,Variable
+sol1_problem180,G6,10,1,0,10.0,25.49,Variable
+sol1_problem180,G7,10,3,2,30.0,12.57,Moderate
+sol1_problem180,G9,10,3,2,30.0,20.03,Variable
+sol1_problem180,OPTIMIZED,10,0,0,0.0,42.43,High Var
+two_hidden_layers_neural_network,BASELINE,10,2,1,20.0,9.92,Stable
+two_hidden_layers_neural_network,G1,10,1,1,10.0,13.73,Moderate
+two_hidden_layers_neural_network,G3,10,2,2,20.0,29.73,Variable
+two_hidden_layers_neural_network,G6,10,3,3,30.0,18.41,Moderate
+two_hidden_layers_neural_network,G7,10,3,3,30.0,19.24,Moderate
+two_hidden_layers_neural_network,OPTIMIZED,10,4,4,40.0,26.00,Variable

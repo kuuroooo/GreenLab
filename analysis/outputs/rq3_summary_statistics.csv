@@ -1,0 +1,3 @@
+treatment,n_benchmarks,energy_median,energy_mean,energy_sd
+CODE_OPTIMIZATION,10,1.00183,28.529902,NA
+MULTITHREADING,9,2.130533333333333,42.54032592592593,NA

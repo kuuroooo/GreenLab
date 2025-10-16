@@ -1,0 +1,11 @@
+Benchmark,Best Variant,Energy (J).x,vs Baseline (%).x,Worst Variant,Energy (J).y,vs Baseline (%).y
+ant_colony_optimization_algorithms,G7,0.45,+0.33,G4,0.49,+8.61
+basic_string,G1,2.27,+72.50,OPTIMIZED,4249.04,+322285.47
+convolution_neural_network,G4,0.60,-59.04,G1,1.37,-6.01
+kmeans,G7,2.80,-6.94,G12,4.53,+50.20
+linear_discriminant_analysis,G9,0.50,-6.08,G1,0.54,+0.37
+n_body_simulation,G9,0.97,-8.24,G12,4.13,+290.90
+sequential_minimum_optimization,OPTIMIZED,13.66,-95.99,G14,340.60,+0.10
+sol1,G6,0.92,-3.15,G12,80.49,+8359.59
+sol1_problem180,G3,0.46,-55.82,G14,1.39,+32.79
+two_hidden_layers_neural_network,G7,0.46,-2.24,G3,0.46,-1.17

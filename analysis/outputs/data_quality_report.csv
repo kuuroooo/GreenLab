@@ -1,0 +1,92 @@
+benchmark,variant,n_runs,missing_energy,missing_power,missing_cpu,missing_memory,n_outliers_moderate,n_outliers_extreme,outlier_rate_pct,energy_cv,stability
+ant_colony_optimization_algorithms,BASELINE,10,0,0,0,0,3,2,30,21.115948507730284,Variable
+ant_colony_optimization_algorithms,G1,10,0,0,0,0,0,0,0,11.370238483183586,Moderate
+ant_colony_optimization_algorithms,G12,10,0,0,0,0,0,0,0,15.623700926625258,Moderate
+ant_colony_optimization_algorithms,G14,10,0,0,0,0,2,2,20,13.802294646756557,Moderate
+ant_colony_optimization_algorithms,G3,10,0,0,0,0,0,0,0,16.278382577416394,Moderate
+ant_colony_optimization_algorithms,G4,10,0,0,0,0,0,0,0,14.067050351718294,Moderate
+ant_colony_optimization_algorithms,G6,10,0,0,0,0,0,0,0,15.733488245064997,Moderate
+ant_colony_optimization_algorithms,G7,10,0,0,0,0,2,2,20,12.853718676252731,Moderate
+ant_colony_optimization_algorithms,G9,10,0,0,0,0,2,2,20,12.120410268729792,Moderate
+ant_colony_optimization_algorithms,OPTIMIZED,10,0,0,0,0,1,0,10,15.811574125207176,Moderate
+basic_string,BASELINE,10,0,0,0,0,2,0,20,14.609607729929209,Moderate
+basic_string,G1,10,0,0,0,0,0,0,0,17.949427761893595,Moderate
+basic_string,G12,10,0,0,0,0,1,0,10,43.937529312455695,Highly Variable
+basic_string,G14,10,0,0,0,0,0,0,0,18.98827424571987,Moderate
+basic_string,G3,10,0,0,0,0,1,0,10,28.76083607435088,Variable
+basic_string,G4,10,0,0,0,0,0,0,0,34.840869976158466,Highly Variable
+basic_string,G6,10,0,0,0,0,1,0,10,35.61813073089407,Highly Variable
+basic_string,G7,10,0,0,0,0,0,0,0,25.11205741407053,Variable
+basic_string,G9,10,0,0,0,0,0,0,0,29.637181433314492,Variable
+basic_string,OPTIMIZED,10,0,0,0,0,0,0,0,17.474615029289982,Moderate
+convolution_neural_network,BASELINE,10,0,0,0,0,2,0,20,9.63332584942618,Stable
+convolution_neural_network,G1,10,0,0,0,0,1,0,10,12.099868358026711,Moderate
+convolution_neural_network,G14,10,0,0,0,0,2,0,20,11.837491100879488,Moderate
+convolution_neural_network,G3,10,0,0,0,0,0,0,0,14.882712662709768,Moderate
+convolution_neural_network,G4,10,0,0,0,0,2,2,20,12.07564889345637,Moderate
+convolution_neural_network,G6,10,0,0,0,0,1,1,10,9.06071426065417,Stable
+convolution_neural_network,G7,10,0,0,0,0,0,0,0,22.19259145972492,Variable
+convolution_neural_network,OPTIMIZED,10,0,0,0,0,0,0,0,15.783545939917754,Moderate
+kmeans,BASELINE,10,0,0,0,0,1,0,10,13.513739164061345,Moderate
+kmeans,G1,10,0,0,0,0,2,2,20,10.97212132981753,Moderate
+kmeans,G12,10,0,0,0,0,2,0,20,8.264337886112221,Stable
+kmeans,G14,10,0,0,0,0,2,1,20,12.645971363847213,Moderate
+kmeans,G3,10,0,0,0,0,1,0,10,7.975933998322876,Stable
+kmeans,G6,10,0,0,0,0,1,0,10,8.284453549973314,Stable
+kmeans,G7,10,0,0,0,0,1,0,10,4.683646181537738,Very Stable
+kmeans,G9,10,0,0,0,0,0,0,0,7.987385307778398,Stable
+kmeans,OPTIMIZED,10,0,0,0,0,1,0,10,13.381016258418727,Moderate
+linear_discriminant_analysis,BASELINE,10,0,0,0,0,0,0,0,4.076701944321865,Very Stable
+linear_discriminant_analysis,G1,10,0,0,0,0,2,1,20,8.672698803494487,Stable
+linear_discriminant_analysis,G12,10,0,0,0,0,1,0,10,5.657800898904039,Stable
+linear_discriminant_analysis,G14,10,0,0,0,0,0,0,0,4.109821482135924,Very Stable
+linear_discriminant_analysis,G3,10,0,0,0,0,0,0,0,4.985073859200954,Very Stable
+linear_discriminant_analysis,G4,10,0,0,0,0,2,0,20,4.22118204028548,Very Stable
+linear_discriminant_analysis,G6,10,0,0,0,0,1,0,10,27.072869917232072,Variable
+linear_discriminant_analysis,G7,10,0,0,0,0,1,1,10,11.661524781799054,Moderate
+linear_discriminant_analysis,G9,10,0,0,0,0,2,2,20,18.016647525968512,Moderate
+linear_discriminant_analysis,OPTIMIZED,10,0,0,0,0,1,1,10,11.281520834362247,Moderate
+n_body_simulation,BASELINE,10,0,0,0,0,2,0,20,12.47643868310153,Moderate
+n_body_simulation,G1,10,0,0,0,0,0,0,0,16.31006968319984,Moderate
+n_body_simulation,G12,10,0,0,0,0,2,1,20,10.197517122323019,Moderate
+n_body_simulation,G14,10,0,0,0,0,1,1,10,10.920148945153397,Moderate
+n_body_simulation,G3,10,0,0,0,0,1,1,10,12.116585690112972,Moderate
+n_body_simulation,G4,10,0,0,0,0,1,0,10,10.268331540304093,Moderate
+n_body_simulation,G6,10,0,0,0,0,1,1,10,9.81107970929627,Stable
+n_body_simulation,G7,10,0,0,0,0,2,2,20,12.810539339034124,Moderate
+n_body_simulation,G9,10,0,0,0,0,2,2,20,20.850675238501374,Variable
+n_body_simulation,OPTIMIZED,10,0,0,0,0,1,1,10,10.508694977509615,Moderate
+sequential_minimum_optimization,BASELINE,10,0,0,0,0,1,1,10,3.2865093278967965,Very Stable
+sequential_minimum_optimization,G1,10,0,0,0,0,1,0,10,4.836545786479183,Very Stable
+sequential_minimum_optimization,G14,10,0,0,0,0,0,0,0,2.404579849298822,Very Stable
+sequential_minimum_optimization,G3,10,0,0,0,0,1,0,10,1.2665829483583988,Very Stable
+sequential_minimum_optimization,G4,10,0,0,0,0,2,1,20,2.5431217207065315,Very Stable
+sequential_minimum_optimization,G6,10,0,0,0,0,3,2,30,3.0523044059348594,Very Stable
+sequential_minimum_optimization,G7,10,0,0,0,0,1,0,10,7.8373471439480715,Stable
+sequential_minimum_optimization,OPTIMIZED,10,0,0,0,0,1,0,10,15.175490573870249,Moderate
+sol1,BASELINE,10,0,0,0,0,3,3,30,14.69744530282978,Moderate
+sol1,G1,10,0,0,0,0,1,1,10,14.892444173560982,Moderate
+sol1,G12,10,0,0,0,0,1,0,10,4.16375897051925,Very Stable
+sol1,G14,10,0,0,0,0,0,0,0,29.542757978647828,Variable
+sol1,G3,10,0,0,0,0,3,3,30,31.856408557891307,Highly Variable
+sol1,G4,10,0,0,0,0,2,0,20,28.51566443012293,Variable
+sol1,G6,10,0,0,0,0,4,3,40,23.036198733364625,Variable
+sol1,G7,10,0,0,0,0,4,4,40,36.11624522080311,Highly Variable
+sol1,G9,10,0,0,0,0,3,2,30,21.399535684343945,Variable
+sol1,OPTIMIZED,10,0,0,0,0,1,1,10,5.793588976657909,Stable
+sol1_problem180,BASELINE,10,0,0,0,0,0,0,0,25.827894890049514,Variable
+sol1_problem180,G1,10,0,0,0,0,3,3,30,30.062967063987127,Highly Variable
+sol1_problem180,G12,10,0,0,0,0,3,2,30,27.198484722061266,Variable
+sol1_problem180,G14,10,0,0,0,0,4,2,40,25.97926214562068,Variable
+sol1_problem180,G3,10,0,0,0,0,4,3,40,26.10204194960224,Variable
+sol1_problem180,G4,10,0,0,0,0,0,0,0,28.76848662682751,Variable
+sol1_problem180,G6,10,0,0,0,0,1,0,10,25.48635071200479,Variable
+sol1_problem180,G7,10,0,0,0,0,3,2,30,12.569869773626403,Moderate
+sol1_problem180,G9,10,0,0,0,0,3,2,30,20.02556760385806,Variable
+sol1_problem180,OPTIMIZED,10,0,0,0,0,0,0,0,42.42806307556492,Highly Variable
+two_hidden_layers_neural_network,BASELINE,10,0,0,0,0,2,1,20,9.918087414005761,Stable
+two_hidden_layers_neural_network,G1,10,0,0,0,0,1,1,10,13.733613260190802,Moderate
+two_hidden_layers_neural_network,G3,10,0,0,0,0,2,2,20,29.727250724669574,Variable
+two_hidden_layers_neural_network,G6,10,0,0,0,0,3,3,30,18.413399797644765,Moderate
+two_hidden_layers_neural_network,G7,10,0,0,0,0,3,3,30,19.24409388129411,Moderate
+two_hidden_layers_neural_network,OPTIMIZED,10,0,0,0,0,4,4,40,26.00153471865818,Variable

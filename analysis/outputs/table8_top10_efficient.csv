@@ -1,0 +1,11 @@
+Rank,Benchmark,Variant,N,Energy Median (J),Energy Mean (J),SD (J),Power (W),CPU (%)
+1,ant_colony_optimization_algorithms,BASELINE,10,0.453,0.462,0.098,2.24,16.6
+2,ant_colony_optimization_algorithms,G14,10,0.455,0.491,0.068,2.34,17.8
+3,ant_colony_optimization_algorithms,G6,10,0.455,0.494,0.078,2.39,15.7
+4,ant_colony_optimization_algorithms,G7,10,0.455,0.482,0.062,2.32,16.1
+5,ant_colony_optimization_algorithms,G3,10,0.457,0.513,0.084,2.46,16.0
+6,ant_colony_optimization_algorithms,G9,10,0.457,0.483,0.059,2.32,14.6
+7,ant_colony_optimization_algorithms,G12,10,0.459,0.501,0.078,2.41,16.4
+8,two_hidden_layers_neural_network,G7,10,0.459,0.450,0.087,2.15,15.2
+9,two_hidden_layers_neural_network,G6,10,0.460,0.450,0.083,2.17,14.9
+10,two_hidden_layers_neural_network,G1,10,0.463,0.448,0.062,2.15,16.3
