@@ -1,0 +1,5 @@
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+best_path = [0, 1, 2, 3, 4, 5, 6, 7, 0]
+best_distance = 37.909778143828696
+Energy consumption in joules: 0.44417348384857175 for 0.22996984 sec of execution.

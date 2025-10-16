@@ -1,0 +1,137 @@
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+
+Generation: 10
+Total Population: 2708
+Best score: 16.0
+Best string: LS£Jeiz^a€g*#s/ècà;y/o£M%?%jd;#eS/*dòce!ZiXm;'Oer f+Q(òeE d&VImj/$te^ggBVrHK+U
+
+Generation: 20
+Total Population: 5568
+Best score: 21.0
+Best string: LSiJeiz^a€g*#s/ècà;y/o£M%?%jd; eST*dòceaZiXmb'Oe, f+Q(òeE d&VImj/#teuaRhirHK+U
+
+Generation: 30
+Total Population: 8428
+Best score: 25.0
+Best string: LSiJeiz^a€gU#s/ècà;ygo£M%?@ d; eST*dòceaZcXmb'Oe, R+QBòeE d&VImu/#te%aR.irHK+U
+
+Generation: 40
+Total Population: 11288
+Best score: 31.0
+Best string: LAiJ iz^a€ge#s/&c ;ygorM%?% d; eSn*dòcea cXmb'Oe, RPulòeE d&VImu/#te%aR.irHK+O
+
+Generation: 50
+Total Population: 14148
+Best score: 33.0
+Best string: LhiJ izla€ge#s/&c ;ygorM%?% d; eST*Iòcea cXmb'Oe, kIulòeE dnVImu/#te%aR.irHK+.
+
+Generation: 60
+Total Population: 17008
+Best score: 37.0
+Best string: LhiE izla€geLs/&c ;;gorM%?% do eST*Iòcea cXmbIOe, kIulòeE !nV mu/#te%a sirHK+.
+
+Generation: 70
+Total Population: 19868
+Best score: 42.0
+Best string: ThiE izla€geLs/&c a;gorM%?% do eSa*Iòcea cXmbMOe, kIolòeE dnV mu/#te%a sirHK+!
+
+Generation: 80
+Total Population: 22728
+Best score: 46.0
+Best string: ThiE izla geLs/&c algorM%?% do eSa*Iacea cXmb'Oe, kIolòeE dnV mu/ate%a srrdK+!
+
+Generation: 90
+Total Population: 25588
+Best score: 50.0
+Best string: ThiE izla geLs/&c algorM%?m do e?a*Iacea c@mbiOe, eIolòeZ dnV mu/ate%a strHK+!
+
+Generation: 100
+Total Population: 28448
+Best score: 53.0
+Best string: ThiE iz a gens/&c algorMt?m do e?a*Iacea c@mbiOe, eIolòeZ dnV mu/ate%a strHK+!
+
+Generation: 110
+Total Population: 31308
+Best score: 59.0
+Best string: ThiE iz a gens/ic algorMthm Eo e?a*Iacea combiOe, eIolòe, And mu/ate%a strHn+!
+
+Generation: 120
+Total Population: 34168
+Best score: 62.0
+Best string: ThiE iz a gens/ic algorithm Eo e?a*Iacea combiOe, eIolòe, And mutate%a strin+!
+
+Generation: 130
+Total Population: 37028
+Best score: 63.0
+Best string: ThiE iz a gens/ic algorithm Eo eqa*IaSe, combiOe, eIolòe, snd mutate%a strin+!
+
+Generation: 140
+Total Population: 39888
+Best score: 63.0
+Best string: ThiE iz a gens/ic algorithm Eo eqa*Iace, combiOe, eIolfe, And mutate%a strin+!
+
+Generation: 150
+Total Population: 42748
+Best score: 65.0
+Best string: ThiE iz a genstic algorithm qo e,a*Iace, combiOe, evolfe, And mutateèa strin+!
+
+Generation: 160
+Total Population: 45608
+Best score: 68.0
+Best string: ThiE iz a gen(tic algorithm .o e?a*fate, combiOe, evolfe, and mutate%a string!
+
+Generation: 170
+Total Population: 48468
+Best score: 68.0
+Best string: ThiE iù a genstic algorithm qo e?a*Iate, combiOe, evolfe, and mutate%a string!
+
+Generation: 180
+Total Population: 51328
+Best score: 69.0
+Best string: ThiG iù a genstic algorithm qo e?a*Iate, combiOe, evolve, and mutate%a string!
+
+Generation: 190
+Total Population: 54188
+Best score: 71.0
+Best string: ThiG iù a genetic algorithm qo e?alIate, combiOe, evolve, and mutate%a string!
+
+Generation: 200
+Total Population: 57048
+Best score: 71.0
+Best string: ThiG iù a genetic algorithm qo e?alIate, combiOe, evolve, and mutate%a string!
+
+Generation: 210
+Total Population: 59908
+Best score: 71.0
+Best string: ThiG iù a genetic algorithm qo e?alIate, combiOe, evolve, and mutate%a string!
+
+Generation: 220
+Total Population: 62768
+Best score: 72.0
+Best string: ThiG is a genetic algorithm qo e?alIate, combiOe, evolve, and mutate%a string!
+
+Generation: 230
+Total Population: 65628
+Best score: 72.0
+Best string: ThiG is a genetic algorithm qo e?alYate, combice, evolve, and mutate%a string!
+
+Generation: 240
+Total Population: 68488
+Best score: 73.0
+Best string: ThiG is a genetic algorithm qo e?aluate, combiOe, evolve, and mutate%a string!
+
+Generation: 250
+Total Population: 71348
+Best score: 74.0
+Best string: ThiG is a genetic algorithm qo e?aluate, combine, evolve, and mutateèa string!
+
+Generation: 260
+Total Population: 74208
+Best score: 76.0
+Best string: ThiG is a genetic algorithm to evaluate, combine, evolve, and mutateèa string!
+
+Generation: 267
+Total Population: 76210
+Target: This is a genetic algorithm to evaluate, combine, evolve, and mutate a string!
+Energy consumption in joules: 3.2721352858543393 for 1.2659119 sec of execution.

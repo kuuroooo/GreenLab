@@ -1,0 +1,4 @@
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python: can't open file '/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab/benchmarks/convolution_neural_network/convolution_neural_network_G4.py': [Errno 2] No such file or directory
+Energy consumption in joules: 0.628137423992157 for 0.23215288 sec of execution.

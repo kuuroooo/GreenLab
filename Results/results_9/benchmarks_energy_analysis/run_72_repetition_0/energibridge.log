@@ -1,0 +1,4 @@
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+1308573035271557743
+Energy consumption in joules: 0.7850842342376708 for 0.45746374 sec of execution.

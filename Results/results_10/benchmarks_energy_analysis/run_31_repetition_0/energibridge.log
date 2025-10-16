@@ -1,0 +1,8 @@
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+Final centroids:
+ [[5.86833333 2.74       4.38166667]
+ [5.006      3.428      1.462     ]
+ [6.8525     3.07       5.6925    ]]
+Heterogeneity history: [np.float64(498.75000000000017), np.float64(138.13585801293823), np.float64(78.9810554039708), np.float64(72.39820500389096), np.float64(70.15153527750974), np.float64(69.48178073464346)]
+Energy consumption in joules: 2.7436752283573154 for 1.0617471 sec of execution.

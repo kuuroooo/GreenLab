@@ -1,0 +1,6 @@
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+  File "/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab/benchmarks/linear_discriminant_analysis/linear_discriminant_analysis_G4.py", line 272
+    try:
+IndentationError: expected an indented block after 'while' statement on line 271
+Energy consumption in joules: 0.5028941202163696 for 0.22254226 sec of execution.

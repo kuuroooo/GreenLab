@@ -381,3 +381,6 @@ if __name__ == "__main__":
     plot("Random system with many bodies", example_3(), -1.5, 1.5, -1.5, 1.5)
 
 
+
+
+

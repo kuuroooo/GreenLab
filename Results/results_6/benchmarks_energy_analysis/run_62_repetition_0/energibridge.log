@@ -1,0 +1,49 @@
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab/benchmarks/sequential_minimum_optimization/sequential_minimum_optimization_G6.py:475: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  data = data.replace({"M": np.float64(1), "B": np.float64(-1)})
+Hello!
+Start test SVM using the SMO algorithm!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+Scanning all samples!
+Scanning non-bound samples!
+All non-bound samples satisfy the KKT condition!
+All samples satisfy the KKT condition!
+Optimization done!
+Every sample satisfy the KKT condition!
+
+All: 241
+Correct: 238
+Incorrect: 3
+Rough Accuracy: 0.9875518672199171
+SMO algorithm cost 0.5549919605255127 seconds
+
+Starting plot, please wait!
+Plot done!
+Energy consumption in joules: 339.2988672292233 for 35.500473 sec of execution.

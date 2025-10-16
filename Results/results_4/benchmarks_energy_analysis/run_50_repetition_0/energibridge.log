@@ -1,0 +1,5 @@
+sudo: a password is required
+ERROR: sudo -n not permitted; add NOPASSWD for /usr/bin/powermetrics
+/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab/benchmarks/n_body_simulation/n_body_simulation_G14.py:312: UserWarning: frames=None which we can infer the length of, did not pass an explicit *save_count* and passed cache_frame_data=True.  To avoid a possibly unbounded cache, frame data caching has been disabled. To suppress this warning either pass `cache_frame_data=False` or `save_count=MAX_FRAMES`.
+  anim = animation.FuncAnimation(  # noqa: F841
+Energy consumption in joules: 1.0042814943790435 for 0.43754846 sec of execution.

@@ -44,6 +44,9 @@ class RunnerConfig:
     def __init__(self):
         """Executes immediately after program start, on config load"""
         
+        # Get run number from environment variable (default to 1 if not set)
+        self.run_number = int(os.environ.get('RUN_NUMBER', 1))
+        
         # Discover all Python files in benchmarks directory
         self.python_files = self._discover_python_files()
         
@@ -59,7 +62,7 @@ class RunnerConfig:
             (RunnerEvents.AFTER_EXPERIMENT, self.after_experiment)
         ])
         self.run_table_model = None  # Initialized later
-        output.console_log(f"Custom config loaded. Found {len(self.python_files)} Python files to benchmark.")
+        output.console_log(f"Custom config loaded for RUN {self.run_number}. Found {len(self.python_files)} Python files to benchmark.")
 
     def _discover_python_files(self) -> List[Path]:
         """Discover all Python files in the benchmarks directory"""
@@ -93,14 +96,14 @@ class RunnerConfig:
     def before_experiment(self) -> None:
         """Perform any activity required before starting the experiment here
         Invoked only once during the lifetime of the program."""
-        output.console_log(f"Starting energy analysis for {len(self.python_files)} benchmark files")
+        output.console_log(f"Starting energy analysis RUN {self.run_number} for {len(self.python_files)} benchmark files")
         
         # Create results directories for each experiment type
         self._create_results_directories()
 
     def _create_results_directories(self):
-        """Create local Results/<experiment_name> directory on the Pi"""
-        results_dir = self.ROOT_DIR / "Results" / self.name
+        """Create local Results/run<N>/<experiment_name> directory on the Pi"""
+        results_dir = self.ROOT_DIR.parent / "Results" / f"run{self.run_number}" / self.name
         results_dir.mkdir(parents=True, exist_ok=True)
         output.console_log(f"Results will be stored locally in: {results_dir}")
 
@@ -129,7 +132,7 @@ class RunnerConfig:
 
         # --- Correct remote paths (keep benchmarks/ prefix) ---
         remote_script = f"{REMOTE_REPO}/benchmarks/{rel_path}"
-        remote_results_dir = f"{REMOTE_REPO}/Results/{self.name}"
+        remote_results_dir = f"{REMOTE_REPO}/Results/run{self.run_number}/{self.name}"
         remote_output = f"{remote_results_dir}/{py_file.stem}.csv"
         venv_python = f"{REMOTE_REPO}/venv/bin/python3"
         activate = f"{REMOTE_REPO}/venv/bin/activate"
@@ -176,7 +179,7 @@ class RunnerConfig:
         pass
 
     def stop_run(self, context: RunnerContext) -> None:
-        """After the run, pull results from Kelly's Mac into Pi's Results/<experiment>/"""
+        """After the run, pull results from Kelly's Mac into Pi's Results/run<N>/<experiment>/"""
         py_file = None
         for factor_name, factor_value in context.execute_run.items():
             if factor_name == "python_file":
@@ -186,9 +189,9 @@ class RunnerConfig:
         if not py_file:
             return
 
-        # Remote + local paths
-        remote_output = f"{REMOTE_REPO}/Results/{self.name}/{py_file.stem}.csv"
-        local_results_dir = self.ROOT_DIR / "Results" / self.name
+        # Remote + local paths with run number
+        remote_output = f"{REMOTE_REPO}/Results/run{self.run_number}/{self.name}/{py_file.stem}.csv"
+        local_results_dir = self.ROOT_DIR.parent / "Results" / f"run{self.run_number}" / self.name
         local_results_dir.mkdir(parents=True, exist_ok=True)
 
         # Rsync from laptop to Pi
@@ -206,7 +209,7 @@ class RunnerConfig:
 
     
     def populate_run_data(self, context: RunnerContext) -> Optional[Dict[str, Any]]:
-        """Parse and process measurement data from Results/<experiment>/<script>.csv"""
+        """Parse and process measurement data from Results/run<N>/<experiment>/<script>.csv"""
         py_file = None
         for factor_name, factor_value in context.execute_run.items():
             if factor_name == "python_file":
@@ -216,8 +219,8 @@ class RunnerConfig:
         if not py_file:
             return None
 
-        # Path to CSV on the Pi
-        output_file = self.ROOT_DIR / "Results" / self.name / f"{py_file.stem}.csv"
+        # Path to CSV on the Pi with run number
+        output_file = self.ROOT_DIR.parent / "Results" / f"run{self.run_number}" / self.name / f"{py_file.stem}.csv"
 
         if not output_file.exists():
             output.console_log(f"Warning: Output file not found: {output_file}")
@@ -310,20 +313,20 @@ class RunnerConfig:
     def after_experiment(self) -> None:
         """Perform any activity required after stopping the experiment here
         Invoked only once during the lifetime of the program."""
-        output.console_log("Benchmark energy analysis completed!")
+        output.console_log(f"Benchmark energy analysis RUN {self.run_number} completed!")
         
         # Create summary report
         self._create_summary_report()
 
     def _create_summary_report(self):
-        """Create a summary report of all experiments (current experiment only)"""
-        summary_root = self.ROOT_DIR / "Results" / self.name
+        """Create a summary report of all experiments (current experiment only) for this run"""
+        summary_root = self.ROOT_DIR.parent / "Results" / f"run{self.run_number}" / self.name
         summary_file = summary_root / "energy_analysis_summary.md"
         summary_root.mkdir(parents=True, exist_ok=True)
 
         with open(summary_file, 'w') as f:
-            f.write(f"# Energy Analysis Summary — {self.name}\n\n")
-            f.write("This report summarizes the energy consumption analysis for this experiment.\n\n")
+            f.write(f"# Energy Analysis Summary — {self.name} (Run {self.run_number})\n\n")
+            f.write(f"This report summarizes the energy consumption analysis for run {self.run_number}.\n\n")
 
             csv_files = sorted(summary_root.glob("*.csv"))
             if csv_files:
