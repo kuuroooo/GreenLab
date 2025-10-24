@@ -29,6 +29,8 @@ scp path/to/headless.sh target_user@target_ip:/
 ```
 For simplicity we will leave the *headless.sh* in the root directory
 
+Alternatively you can also copy the headless.sh from the main directory on the target device, (This was added later) into your root folder
+
 Most likely you will need to make the *headless.sh* file executable using:
 ```
 sudo chmod +x headless.sh
