@@ -24,7 +24,7 @@
 From the targetSystem, copy the *headless.sh* file into the root directory of your target device. 
 
 ```
-mv path/to/headless.sh /
+mv targetSystem/headless.sh /
 ```
 For simplicity we will leave the *headless.sh* in the root directory
 
