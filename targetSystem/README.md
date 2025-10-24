@@ -21,15 +21,13 @@
 3. When it turns green (enabled), it automatically starts the SSH server
 
 #### 2.)Copy headless.sh
-From the Experiment Orchestrator, copy the *headless.sh* file into the root directory of your target device. 
-This can be done using scp if you have already successfully setup both devices SSH connection.
+From the target system folder, copy the *headless.sh* file into the root directory of your target device. 
 
 ```
-scp path/to/headless.sh target_user@target_ip:/
+mv path_to_folder/headless.sh /
 ```
 For simplicity we will leave the *headless.sh* in the root directory
 
-Alternatively you can also copy the headless.sh from the main directory on the target device, (This was added later) into your root folder
 
 Most likely you will need to make the *headless.sh* file executable using:
 ```
