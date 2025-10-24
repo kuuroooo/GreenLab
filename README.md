@@ -1,11 +1,11 @@
 
 
 ### Description of Files and Structure 
-- The jobRunner.sh & RunnerConfig.py, which were used to run the experiment, are to be found in the benchmarks directory
+- The jobRunner.sh & RunnerConfig.py, which were used to run the experiment, are to be found in the targetSystem/benchmarks directory
 
-- Run table can be found in experiments/benchmarks_energy_analysis/
+- Run table can be found in targetSystem/experiments/benchmarks_energy_analysis/
 
-- The script used for analysis can be found under analysis.R
+- The script used for analysis can be found under targetSystem/analysis.R
 
 - The jobRunner.sh for the ExperimentOrchestrator can be found under ExperimentOrchestrator/jobRunner.sh
 
