@@ -7,6 +7,9 @@
 
 - The script used for analysis can be found under analysis.R
 
+- The jobRunner.sh for the ExperimentOrchestrator can be found under ExperimentOrchestrator/jobRunner.sh
+
+- The WarmupScript.py, RunnerConfig.py and headless.sh which are used to run the experiment through the ExperimentOrchestrator can all be found under the ExperimentOrchestrator/
 ***
 ### Target Machine Setup
 
