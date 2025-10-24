@@ -144,6 +144,8 @@ Rscript analysis.R
 ```
 This should install all necessary R dependencies and generate the graphs, as long as it is located in the same directory as EXPERIMENTS and Results
 
+NOTE: You might first need to retrieve the Results and EXPERIMENTS from the Experiment orchestration device (this can easily be done using SCP) before applying the script.
+
 Congratulations you are done !
 
 
