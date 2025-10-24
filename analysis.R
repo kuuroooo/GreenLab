@@ -15,7 +15,7 @@ suppressPackageStartupMessages({
 })
 
 
-WORKSPACE_ROOT <- "/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab"
+WORKSPACE_ROOT <- getwd()
 RESULTS_ROOT <- file.path(WORKSPACE_ROOT, "RESULTS")
 EXPERIMENTS_ROOT <- file.path(WORKSPACE_ROOT, "EXPERIMENTS")
 SUBDIR <- "benchmarks_energy_analysis"
