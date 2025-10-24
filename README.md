@@ -11,13 +11,13 @@
 ### Target Machine Setup
 
 
-Enable SSH on the target system, (MacBook)
+## 1.)Enable SSH on the target system, (MacBook)
 #### Through system settings:
 1. Open **System Settings → General → Sharing**
 2. Find and toggle **Remote Login**
 3. When it turns green (enabled), it automatically starts the SSH server
 
-#### Copy headless.sh
+#### 2.)Copy headless.sh
 From the Experiment Orchestrator, copy the *headless.sh* file into the root directory of your target device. 
 This can be done using scp if you have already successfully setup both devices SSH connection.
 
