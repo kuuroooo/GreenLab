@@ -1,0 +1,12 @@
+pandas
+psutil
+tabulate
+dill
+jsonpickle
+python-dotenv
+paramiko
+scp
+tqdm
+matplotlib
+numpy
+
