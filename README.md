@@ -41,11 +41,7 @@ Now place all repository files onto the target system, install energi bridge and
 
 ### Install the Dependencies
 After successfully setting up the experiment runner, *see experiment runner*
-you should run the requirements.txt using:
-```
-pip install -r requirements.txt
-```
-In the main folder. This should install the majority of requirements needed.
+You should have installed the majority of requirements needed.
 
 ***
 ### Experiment Orchestrator Setup
