@@ -17,16 +17,30 @@ Enable SSH on the target system, (MacBook)
 2. Find and toggle **Remote Login**
 3. When it turns green (enabled), it automatically starts the SSH server
 
-#### Copy headless.py
-From the Experiment Orchestrator, copy the *headless.py* file into the root directory of your target device. 
+#### Copy headless.sh
+From the Experiment Orchestrator, copy the *headless.sh* file into the root directory of your target device. 
 This can be done using scp if you have already successfully setup both devices SSH connection.
 
 ```
-scp path/to/headless.py target_user@target_ip/
+scp path/to/headless.sh target_user@target_ip:/
 ```
-For simplicity we will leave the *headless.py* in the root directory
+For simplicity we will leave the *headless.sh* in the root directory
+
+Most likely you will need to make the *headless.sh* file executable using:
+```
+sudo chmod +x headless.sh
+```
+On your target device
 
 Now place all repository files onto the target system, install energi bridge and all dependencies (see experiment-runner), once this is done your setup for the target system is complete.
+
+### Install the Dependencies
+After successfully setting up the experiment runner, *see experiment runner*
+you should run the requirements.txt using:
+```
+pip install -r requirements.txt
+```
+In the main folder. This should install the majority of requirements needed.
 
 ***
 ### Experiment Orchestrator Setup
@@ -75,13 +89,51 @@ ssh macbook
 If successful, the SSH configuration for the experiment orchestrator should now be setup properly and scripts can now use this shortcut.
 
 ### 2.) Adjust path variables
-Now that both SSH and the target system are setup, you will need to adjust the relevant file paths in a variety of scripts. 
+Now that both SSH and the target system are setup, you will need to adjust the relevant file paths in the .env file for the scripts to work.
 
+Navigate to your Experiment Orchestrators directory and edit or create a .env file, you can do this through:
+```
+touch .env (if .env doenst exist)
+nano .env
+```
+In the *.env* file add the following two lines:
+```
+SSH_COMMAND=ssh macbook
+REMOTE_REPO=/Users/kellywang/Documents/compSci/p1/greenLab/GreenLab
+```
+Depending on how you followed the ssh setup in step 1, make sure to use the appropriate shortcut name you setup. 
+
+Furthermore make sure to replace the path for the REMOTE_REPO with the relevant REMOTE_REPO path, where your experiment is located on 
+the target machine respectively
+
+Now you are good to go !
+
+### 3.) Install any required dependencies
+On the Experiment orchestrator make sure to run:
+```
+pip install -r requirements.txt
+```
+This should cover most of the requirements needed...
 
 ***
 ## Running the experiment
+Once you have followed the previous steps navigate to the Experiment Orchestrator directory on your experiment orchestrator device.
+(Optional) Within the jobRunner.sh script you can set the number of experiment runs, default is 10
+
+In order to run the experiment, go to the Experiment Orchestrator Folder and simply execute the jobRunner.sh script using:
+```
+./jobRunner.sh
+```
+If you receive a permission error you might need to make the script executable using 
+```
+sudo chmod +x jobRunner.sh
+```
+
+Done, The target PC should now warm up and begin running the experiments, this can take up to several hours, depending on your experiment number setting, 
+default is 10 (Used within this report)
 
 
+Once finished you can now retrieve the data from the Experiment Orchestrator, it will be found in a variety of folders.
 
 ***
 ## Analyzing the data
