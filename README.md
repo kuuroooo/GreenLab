@@ -9,7 +9,9 @@
 
 - The jobRunner.sh for the ExperimentOrchestrator can be found under ExperimentOrchestrator/jobRunner.sh
 
-- The WarmupScript.py, RunnerConfig.py and headless.sh which are used to run the experiment through the ExperimentOrchestrator can all be found under the ExperimentOrchestrator/
+- The WarmupScript.py used to pre heat the target system, RunnerConfig.py used to remotely execute the experiment runner can all be found under the ExperimentOrchestrator/
+
+- The headless.sh used to reduce the energy consumption of the target system by shutting down unnecessary applications can be found under: targetSystem/headless.sh
 ***
 ### Target Machine Setup
 
